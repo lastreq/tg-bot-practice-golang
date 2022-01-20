@@ -1,4 +1,4 @@
-# TelegramBot-Go
+# Tg-bot-practice-golang
 
 Учебный проект по Golang 
 Телеграмм бот для получения расписания с сайта ИТМО https://itmo.ru/ru//schedule/raspisanie_zanyatiy.htm
