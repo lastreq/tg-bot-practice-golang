@@ -51,7 +51,7 @@ func getSchedule(group string, day int) string {
 		return fmt.Sprintf("Никакой учебы по воскресеньям")
 	}
 	//doc1 := goquery.NewDocumentFromNode(tableContent.Nodes[day])
-	resultFull += getToday(doc)
+	resultFull += getToday(doc) + getDayToParse(doc, dayString)
 
 	return resultFull
 }
@@ -64,6 +64,16 @@ func getToday(doc *goquery.Document) string {
 		}
 	})
 	return day
+}
+
+func getDayToParse(doc *goquery.Document, s string) string {
+	var result = "Нет занятий в этот день"
+	doc.Find("table").Each(func(index int, item *goquery.Selection) {
+		if item.AttrOr("id", "") == s {
+			result = parseDay(item)
+		}
+	})
+	return result
 }
 
 func parseDay(doc1 *goquery.Selection) string {
