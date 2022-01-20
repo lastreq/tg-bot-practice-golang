@@ -38,11 +38,6 @@ func getSchedule(group string, day int) string {
 	}
 	tableContent := doc.Find("table")
 	dayString := fmt.Sprintf("%vday", day)
-	doc.Find("table").Each(func(index int, item *goquery.Selection) {
-		if item.AttrOr("id", "") == dayString {
-			resultFull += parseDay(item)
-		}
-	})
 
 	if len(tableContent.Nodes) == 0 {
 		return fmt.Sprintf("Расписание занятий для группы %v не найдено", group)
