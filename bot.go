@@ -36,8 +36,13 @@ func getSchedule(group string, day int) string {
 	if err != nil {
 		log.Println(err)
 	}
+	tableContent := doc.Find("table")
 	dayString := fmt.Sprintf("%vday", day)
-	tableContent := doc.Find(dayString)
+	doc.Find("table").Each(func(index int, item *goquery.Selection) {
+		if item.AttrOr("id", "") == dayString {
+			resultFull += parseDay(item)
+		}
+	})
 
 	if len(tableContent.Nodes) == 0 {
 		return fmt.Sprintf("Расписание занятий для группы %v не найдено", group)
@@ -45,8 +50,8 @@ func getSchedule(group string, day int) string {
 	if day == 7 {
 		return fmt.Sprintf("Никакой учебы по воскресеньям")
 	}
-	doc1 := goquery.NewDocumentFromNode(tableContent.Nodes[day])
-	resultFull += getToday(doc) + parseDay(doc1)
+	//doc1 := goquery.NewDocumentFromNode(tableContent.Nodes[day])
+	resultFull += getToday(doc)
 
 	return resultFull
 }
@@ -61,7 +66,7 @@ func getToday(doc *goquery.Document) string {
 	return day
 }
 
-func parseDay(doc1 *goquery.Document) string {
+func parseDay(doc1 *goquery.Selection) string {
 	var timeSlice, locationSlice, lessonsSlice, roomSlice, teacherSlice, lessonsTypeSlice, weeksSlice []string
 	var result string
 	doc1.Find("td").Each(func(index int, item *goquery.Selection) {
