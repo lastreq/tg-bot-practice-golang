@@ -151,7 +151,7 @@ func telegramBot() {
 
 	updates := bot.ListenForWebhook("/")
 
-	go http.ListenAndServe(os.Getenv("PORT"), nil)
+	go http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 	fmt.Println("start listen:" + os.Getenv("PORT"))
 
 	// получаем все обновления из канала updates
