@@ -6,6 +6,7 @@ import (
 	tgbotapi "gopkg.in/telegram-bot-api.v4"
 	"log"
 	"net/http"
+	"os"
 	"reflect"
 	"regexp"
 	"strings"
@@ -45,7 +46,6 @@ func getSchedule(group string, day int) string {
 		return fmt.Sprintf("Никакой учебы по воскресеньям")
 	}
 	doc1 := goquery.NewDocumentFromNode(tableContent.Nodes[day])
-	parseDay(doc1)
 	resultFull += getToday(doc) + parseDay(doc1)
 
 	return resultFull
@@ -151,7 +151,7 @@ func telegramBot() {
 
 	updates := bot.ListenForWebhook("/")
 
-	go http.ListenAndServe(":80", nil)
+	go http.ListenAndServe(os.Getenv("PORT"), nil)
 	fmt.Println("start listen :80")
 
 	// получаем все обновления из канала updates
