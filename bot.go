@@ -13,7 +13,7 @@ import (
 
 const (
 	BotToken   = "5063425452:AAHSgIlzli2FQnnfnZqfVqItLoPVedHEQuo"
-	WebhookURL = "https://tg-bot-golang-practice.herokuapp.com:8080"
+	WebhookURL = "https://tg-bot-golang-practice.herokuapp.com:80"
 )
 
 func getSchedule(group string, day int) string {
