@@ -36,8 +36,8 @@ func getSchedule(group string, day int) string {
 	if err != nil {
 		log.Println(err)
 	}
-
-	tableContent := doc.Find("table")
+	dayString := fmt.Sprintf("%vday", day)
+	tableContent := doc.Find(dayString)
 
 	if len(tableContent.Nodes) == 0 {
 		return fmt.Sprintf("Расписание занятий для группы %v не найдено", group)

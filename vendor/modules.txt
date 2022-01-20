@@ -1,0 +1,18 @@
+# github.com/PuerkitoBio/goquery v1.8.1-0.20220104194308-8c90f82d4f4e
+## explicit; go 1.13
+github.com/PuerkitoBio/goquery
+# github.com/andybalholm/cascadia v1.3.2-0.20220104174750-b91ef208019c
+## explicit; go 1.16
+github.com/andybalholm/cascadia
+# github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible
+## explicit
+# github.com/technoweenie/multipartstreamer v1.0.1
+## explicit
+github.com/technoweenie/multipartstreamer
+# golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d
+## explicit; go 1.17
+golang.org/x/net/html
+golang.org/x/net/html/atom
+# gopkg.in/telegram-bot-api.v4 v4.6.4
+## explicit
+gopkg.in/telegram-bot-api.v4
