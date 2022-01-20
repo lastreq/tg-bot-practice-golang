@@ -13,7 +13,7 @@ import (
 
 const (
 	BotToken   = "5063425452:AAHSgIlzli2FQnnfnZqfVqItLoPVedHEQuo"
-	WebhookURL = "https://tg-bot-golang-practice.herokuapp.com:80"
+	WebhookURL = "https://tg-bot-golang-practice.herokuapp.com"
 )
 
 func getSchedule(group string, day int) string {
@@ -151,8 +151,8 @@ func telegramBot() {
 
 	updates := bot.ListenForWebhook("/")
 
-	go http.ListenAndServe(":8080", nil)
-	fmt.Println("start listen :8080")
+	go http.ListenAndServe(":80", nil)
+	fmt.Println("start listen :80")
 
 	// получаем все обновления из канала updates
 	for update := range updates {
